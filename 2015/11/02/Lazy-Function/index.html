@@ -65,16 +65,22 @@
 
 
 
-<meta name="description" content="1234567891011121314151617181920212223242526Function.prototype.before = function(beforefn) &amp;#123;  var self = this;  return function()&amp;#123;    beforefn.apply(this, arguments);    return self.apply(thi">
+<meta name="description" content="惰性加载函数: 函数在第一次调用时覆盖并执行当前函数
+
+1234567891011121314151617var func = function(type) &amp;#123;  switch(type) &amp;#123;    case &apos;a&apos;:      func = function() &amp;#123;        alert(&apos;a&apos;);      &amp;#125;      break;    case">
 <meta property="og:type" content="article">
-<meta property="og:title" content="before & after">
-<meta property="og:url" content="http://yoursite.com/2015/11/02/before-after/index.html">
+<meta property="og:title" content="Lazy Function">
+<meta property="og:url" content="http://yoursite.com/2015/11/02/Lazy-Function/index.html">
 <meta property="og:site_name" content="Bin 博客">
-<meta property="og:description" content="1234567891011121314151617181920212223242526Function.prototype.before = function(beforefn) &amp;#123;  var self = this;  return function()&amp;#123;    beforefn.apply(this, arguments);    return self.apply(thi">
-<meta property="og:updated_time" content="2015-11-02T01:14:15.000Z">
+<meta property="og:description" content="惰性加载函数: 函数在第一次调用时覆盖并执行当前函数
+
+1234567891011121314151617var func = function(type) &amp;#123;  switch(type) &amp;#123;    case &apos;a&apos;:      func = function() &amp;#123;        alert(&apos;a&apos;);      &amp;#125;      break;    case">
+<meta property="og:updated_time" content="2015-11-02T07:37:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="before & after">
-<meta name="twitter:description" content="1234567891011121314151617181920212223242526Function.prototype.before = function(beforefn) &amp;#123;  var self = this;  return function()&amp;#123;    beforefn.apply(this, arguments);    return self.apply(thi">
+<meta name="twitter:title" content="Lazy Function">
+<meta name="twitter:description" content="惰性加载函数: 函数在第一次调用时覆盖并执行当前函数
+
+1234567891011121314151617var func = function(type) &amp;#123;  switch(type) &amp;#123;    case &apos;a&apos;:      func = function() &amp;#123;        alert(&apos;a&apos;);      &amp;#125;      break;    case">
 
 
 
@@ -87,7 +93,7 @@
   };
 </script>
 
-  <title> before & after | Bin 博客 </title>
+  <title> Lazy Function | Bin 博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -220,7 +226,7 @@
             
             
               
-                before & after
+                Lazy Function
               
             
           </h1>
@@ -229,7 +235,7 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-11-02T09:02:07+08:00" content="2015-11-02">
+            <time itemprop="dateCreated" datetime="2015-11-02T15:16:04+08:00" content="2015-11-02">
               2015-11-02
             </time>
           </span>
@@ -268,8 +274,11 @@
       
 
       
-        <span itemprop="articleBody"><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.before = <span class="function"><span class="keyword">function</span>(<span class="params">beforefn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    beforefn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">return</span> self.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">Function</span>.prototype.after = <span class="function"><span class="keyword">function</span>(<span class="params">afterfn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> result = self.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    afterfn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'func'</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'ok'</span>;</span><br><span class="line">&#125;;</span><br><span class="line">func = func.before(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'before'</span>);</span><br><span class="line">&#125;).after(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'after'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> r = func();</span><br><span class="line"><span class="built_in">console</span>.log(r);</span><br></pre></td></tr></table></figure>
-</span>
+        <span itemprop="articleBody"><blockquote>
+<p><strong>惰性加载函数:</strong> <em>函数在第一次调用时覆盖并执行当前函数</em></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params">type</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span>(type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'a'</span>:</span><br><span class="line">      func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="string">'a'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'b'</span>:</span><br><span class="line">      func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="string">'b'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  func(type);</span><br><span class="line">&#125;</span><br><span class="line">func(<span class="string">'a'</span>);</span><br><span class="line">func(<span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> addEvent = <span class="function"><span class="keyword">function</span>(<span class="params">elem, type, handler</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">window</span>.addEventListener) &#123;</span><br><span class="line">    addEvent = <span class="function"><span class="keyword">function</span>(<span class="params">elem, type, handler</span>) </span>&#123;</span><br><span class="line">      elem.addEventListener(type, handler, <span class="literal">false</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">window</span>.attachEvent) &#123;</span><br><span class="line">    addEvent = <span class="function"><span class="keyword">function</span>(<span class="params">elem, type, handler</span>) </span>&#123;</span><br><span class="line">      elem.attachEvent(<span class="string">'on'</span>+type, handler);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  addEvent(elem, type, handler);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
       
     </div>
 
@@ -286,16 +295,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/30/arguments-callee/" rel="next" title="arguments & callee">
-                <i class="fa fa-chevron-left"></i> arguments & callee
+              <a href="/2015/11/02/currying-uncurrying/" rel="next" title="currying & uncurrying">
+                <i class="fa fa-chevron-left"></i> currying & uncurrying
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/02/currying-uncurrying/" rel="prev" title="currying & uncurrying">
-                currying & uncurrying <i class="fa fa-chevron-right"></i>
+              <a href="/2015/11/02/Delay-Function/" rel="prev" title="Delay Function">
+                Delay Function <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -65,16 +65,16 @@
 
 
 
-<meta name="description" content="1234567891011121314151617181920212223242526Function.prototype.before = function(beforefn) &amp;#123;  var self = this;  return function()&amp;#123;    beforefn.apply(this, arguments);    return self.apply(thi">
+<meta name="description" content="1234567891011121314151617181920212223242526var delay = function(fn, interval) &amp;#123;  var timer,      first = true;  return function() &amp;#123;    var args = arguments,        self = this;    if(first)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="before & after">
-<meta property="og:url" content="http://yoursite.com/2015/11/02/before-after/index.html">
+<meta property="og:title" content="Delay Function">
+<meta property="og:url" content="http://yoursite.com/2015/11/02/Delay-Function/index.html">
 <meta property="og:site_name" content="Bin 博客">
-<meta property="og:description" content="1234567891011121314151617181920212223242526Function.prototype.before = function(beforefn) &amp;#123;  var self = this;  return function()&amp;#123;    beforefn.apply(this, arguments);    return self.apply(thi">
-<meta property="og:updated_time" content="2015-11-02T01:14:15.000Z">
+<meta property="og:description" content="1234567891011121314151617181920212223242526var delay = function(fn, interval) &amp;#123;  var timer,      first = true;  return function() &amp;#123;    var args = arguments,        self = this;    if(first)">
+<meta property="og:updated_time" content="2015-11-02T08:11:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="before & after">
-<meta name="twitter:description" content="1234567891011121314151617181920212223242526Function.prototype.before = function(beforefn) &amp;#123;  var self = this;  return function()&amp;#123;    beforefn.apply(this, arguments);    return self.apply(thi">
+<meta name="twitter:title" content="Delay Function">
+<meta name="twitter:description" content="1234567891011121314151617181920212223242526var delay = function(fn, interval) &amp;#123;  var timer,      first = true;  return function() &amp;#123;    var args = arguments,        self = this;    if(first)">
 
 
 
@@ -87,7 +87,7 @@
   };
 </script>
 
-  <title> before & after | Bin 博客 </title>
+  <title> Delay Function | Bin 博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -220,7 +220,7 @@
             
             
               
-                before & after
+                Delay Function
               
             
           </h1>
@@ -229,7 +229,7 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-11-02T09:02:07+08:00" content="2015-11-02">
+            <time itemprop="dateCreated" datetime="2015-11-02T15:35:17+08:00" content="2015-11-02">
               2015-11-02
             </time>
           </span>
@@ -268,7 +268,7 @@
       
 
       
-        <span itemprop="articleBody"><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.before = <span class="function"><span class="keyword">function</span>(<span class="params">beforefn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    beforefn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">return</span> self.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">Function</span>.prototype.after = <span class="function"><span class="keyword">function</span>(<span class="params">afterfn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> result = self.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    afterfn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'func'</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'ok'</span>;</span><br><span class="line">&#125;;</span><br><span class="line">func = func.before(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'before'</span>);</span><br><span class="line">&#125;).after(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'after'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> r = func();</span><br><span class="line"><span class="built_in">console</span>.log(r);</span><br></pre></td></tr></table></figure>
+        <span itemprop="articleBody"><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> delay = <span class="function"><span class="keyword">function</span>(<span class="params">fn, interval</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> timer,</span><br><span class="line">      first = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> args = <span class="built_in">arguments</span>,</span><br><span class="line">        self = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(first) &#123;</span><br><span class="line">      fn.apply(self, args);</span><br><span class="line">      <span class="keyword">return</span> first = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(timer) &#123; <span class="keyword">return</span> <span class="literal">false</span>; &#125;</span><br><span class="line"></span><br><span class="line">    timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      clearTimeout(timer);</span><br><span class="line">      timer = <span class="literal">null</span>;</span><br><span class="line">      fn.apply(self, args);</span><br><span class="line">    &#125;, interval || <span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.onresize = delay(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'resize'</span>);</span><br><span class="line">&#125;, <span class="number">2000</span>);</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
@@ -286,16 +286,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/30/arguments-callee/" rel="next" title="arguments & callee">
-                <i class="fa fa-chevron-left"></i> arguments & callee
+              <a href="/2015/11/02/Lazy-Function/" rel="next" title="Lazy Function">
+                <i class="fa fa-chevron-left"></i> Lazy Function
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/02/currying-uncurrying/" rel="prev" title="currying & uncurrying">
-                currying & uncurrying <i class="fa fa-chevron-right"></i>
+              <a href="/2015/11/02/单例模式/" rel="prev" title="单例模式">
+                单例模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

@@ -77,7 +77,7 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
 callee: 返回正被执行的 Function 对象，也就是所指定的 Function 对象的正文。
 
 12345678//递归调用(function(num) &amp;#123;  num++;  console.log(num);  if(num&amp;lt;5) &amp;#123;    arguments.callee(num);  &amp;">
-<meta property="og:updated_time" content="2015-10-30T06:36:04.000Z">
+<meta property="og:updated_time" content="2015-11-02T07:22:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="arguments & callee">
 <meta name="twitter:description" content="arguments: 该对象代表正在执行的函数和调用它的函数的参数。
@@ -278,8 +278,8 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
 
       
         <span itemprop="articleBody"><ul>
-<li><strong>arguments</strong>: 该对象代表正在执行的函数和调用它的函数的参数。</li>
-<li><strong>callee</strong>: 返回正被执行的 Function 对象，也就是所指定的 Function 对象的正文。</li>
+<li><strong>arguments:</strong> 该对象代表正在执行的函数和调用它的函数的参数。</li>
+<li><strong>callee:</strong> 返回正被执行的 Function 对象，也就是所指定的 Function 对象的正文。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归调用</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  num++;</span><br><span class="line">  <span class="built_in">console</span>.log(num);</span><br><span class="line">  <span class="keyword">if</span>(num&lt;<span class="number">5</span>) &#123;</span><br><span class="line">    <span class="built_in">arguments</span>.callee(num);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">  alert(<span class="built_in">arguments</span>.length); <span class="comment">//实参长度</span></span><br><span class="line">  alert(<span class="built_in">arguments</span>.callee.length); <span class="comment">//形参长度</span></span><br><span class="line">&#125;</span><br><span class="line">test(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br></pre></td></tr></table></figure></span>
@@ -377,7 +377,7 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -391,7 +391,7 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
