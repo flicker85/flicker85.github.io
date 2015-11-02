@@ -65,25 +65,22 @@
 
 
 
-<meta name="description" content="arguments: 该对象代表正在执行的函数和调用它的函数的参数。
-callee: 返回正被执行的 Function 对象，也就是所指定的 Function 对象的正文。
+<meta name="description" content="currying: “柯里化”，又称部分求值，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。
 
-12345678//递归调用(function(num) &amp;#123;  num++;  console.log(num);  if(num&amp;lt;5) &amp;#123;    arguments.callee(num);  &amp;">
+12345678910111213141516171819202122232425var currying = function(fn) &amp;#123;  var args = [];  return function() &amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="arguments & callee">
-<meta property="og:url" content="http://yoursite.com/2015/10/30/arguments-callee/index.html">
+<meta property="og:title" content="currying & uncurrying">
+<meta property="og:url" content="http://yoursite.com/2015/11/02/currying-uncurrying/index.html">
 <meta property="og:site_name" content="Bin 博客">
-<meta property="og:description" content="arguments: 该对象代表正在执行的函数和调用它的函数的参数。
-callee: 返回正被执行的 Function 对象，也就是所指定的 Function 对象的正文。
+<meta property="og:description" content="currying: “柯里化”，又称部分求值，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。
 
-12345678//递归调用(function(num) &amp;#123;  num++;  console.log(num);  if(num&amp;lt;5) &amp;#123;    arguments.callee(num);  &amp;">
-<meta property="og:updated_time" content="2015-10-30T06:36:04.000Z">
+12345678910111213141516171819202122232425var currying = function(fn) &amp;#123;  var args = [];  return function() &amp;">
+<meta property="og:updated_time" content="2015-11-02T06:07:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="arguments & callee">
-<meta name="twitter:description" content="arguments: 该对象代表正在执行的函数和调用它的函数的参数。
-callee: 返回正被执行的 Function 对象，也就是所指定的 Function 对象的正文。
+<meta name="twitter:title" content="currying & uncurrying">
+<meta name="twitter:description" content="currying: “柯里化”，又称部分求值，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。
 
-12345678//递归调用(function(num) &amp;#123;  num++;  console.log(num);  if(num&amp;lt;5) &amp;#123;    arguments.callee(num);  &amp;">
+12345678910111213141516171819202122232425var currying = function(fn) &amp;#123;  var args = [];  return function() &amp;">
 
 
 
@@ -96,7 +93,7 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
   };
 </script>
 
-  <title> arguments & callee | Bin 博客 </title>
+  <title> currying & uncurrying | Bin 博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -229,7 +226,7 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
             
             
               
-                arguments & callee
+                currying & uncurrying
               
             
           </h1>
@@ -238,8 +235,8 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-30T14:04:24+08:00" content="2015-10-30">
-              2015-10-30
+            <time itemprop="dateCreated" datetime="2015-11-02T10:59:42+08:00" content="2015-11-02">
+              2015-11-02
             </time>
           </span>
 
@@ -277,12 +274,14 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
       
 
       
-        <span itemprop="articleBody"><ul>
-<li><strong>arguments</strong>: 该对象代表正在执行的函数和调用它的函数的参数。</li>
-<li><strong>callee</strong>: 返回正被执行的 Function 对象，也就是所指定的 Function 对象的正文。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归调用</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  num++;</span><br><span class="line">  <span class="built_in">console</span>.log(num);</span><br><span class="line">  <span class="keyword">if</span>(num&lt;<span class="number">5</span>) &#123;</span><br><span class="line">    <span class="built_in">arguments</span>.callee(num);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">  alert(<span class="built_in">arguments</span>.length); <span class="comment">//实参长度</span></span><br><span class="line">  alert(<span class="built_in">arguments</span>.callee.length); <span class="comment">//形参长度</span></span><br><span class="line">&#125;</span><br><span class="line">test(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br></pre></td></tr></table></figure></span>
+        <span itemprop="articleBody"><blockquote>
+<p><strong>currying</strong>: <em>“柯里化”，又称部分求值，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。</em></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currying = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> args = [];</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">arguments</span>.length == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, args);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      [].push.apply(args, <span class="built_in">arguments</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">arguments</span>.callee;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> total = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,num;num=<span class="built_in">arguments</span>[i++];) &#123;</span><br><span class="line">    total += num;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> total;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> sum = currying(func);</span><br><span class="line">sum(<span class="number">100</span>);</span><br><span class="line">sum(<span class="number">200</span>,<span class="number">300</span>);</span><br><span class="line">sum(<span class="number">400</span>)(<span class="number">500</span>);</span><br><span class="line">alert(sum());</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>uncurrying</strong>: <em>“反柯里化”的作用在于扩大函数的适用性，使本来作为特定对象所拥有的功能的函数可以被任意对象所用。</em></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.uncurrying = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Function</span>.prototype.call.apply(self, <span class="built_in">arguments</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  name: <span class="string">'a'</span>,</span><br><span class="line">  getName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> b = &#123;name: <span class="string">'b'</span>&#125;;</span><br><span class="line"><span class="comment">//反柯里化,使slice可以被任意对象所用.</span></span><br><span class="line"><span class="keyword">var</span> getName = a.getName.uncurrying();</span><br><span class="line">alert(getName(b));</span><br><span class="line"></span><br><span class="line"><span class="comment">//反柯里化,使slice可以被任意对象所用.</span></span><br><span class="line"><span class="keyword">var</span> slice = <span class="built_in">Array</span>.prototype.slice.uncurrying();</span><br><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//var arr = Array.prototype.slice.call(arguments);</span></span><br><span class="line">  <span class="keyword">var</span> arr = slice(<span class="built_in">arguments</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(arr.join(<span class="string">','</span>));</span><br><span class="line">&#125;</span><br><span class="line">func(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);</span><br></pre></td></tr></table></figure></span>
       
     </div>
 
@@ -299,17 +298,13 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/28/Function-prototype-bind/" rel="next" title="Function.prototype.bind">
-                <i class="fa fa-chevron-left"></i> Function.prototype.bind
+              <a href="/2015/11/02/before-after/" rel="next" title="before & after">
+                <i class="fa fa-chevron-left"></i> before & after
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/02/before-after/" rel="prev" title="before & after">
-                before & after <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

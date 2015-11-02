@@ -65,25 +65,16 @@
 
 
 
-<meta name="description" content="arguments: 该对象代表正在执行的函数和调用它的函数的参数。
-callee: 返回正被执行的 Function 对象，也就是所指定的 Function 对象的正文。
-
-12345678//递归调用(function(num) &amp;#123;  num++;  console.log(num);  if(num&amp;lt;5) &amp;#123;    arguments.callee(num);  &amp;">
+<meta name="description" content="1234567891011121314151617181920212223242526Function.prototype.before = function(beforefn) &amp;#123;  var self = this;  return function()&amp;#123;    beforefn.apply(this, arguments);    return self.apply(thi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="arguments & callee">
-<meta property="og:url" content="http://yoursite.com/2015/10/30/arguments-callee/index.html">
+<meta property="og:title" content="before & after">
+<meta property="og:url" content="http://yoursite.com/2015/11/02/before-after/index.html">
 <meta property="og:site_name" content="Bin 博客">
-<meta property="og:description" content="arguments: 该对象代表正在执行的函数和调用它的函数的参数。
-callee: 返回正被执行的 Function 对象，也就是所指定的 Function 对象的正文。
-
-12345678//递归调用(function(num) &amp;#123;  num++;  console.log(num);  if(num&amp;lt;5) &amp;#123;    arguments.callee(num);  &amp;">
-<meta property="og:updated_time" content="2015-10-30T06:36:04.000Z">
+<meta property="og:description" content="1234567891011121314151617181920212223242526Function.prototype.before = function(beforefn) &amp;#123;  var self = this;  return function()&amp;#123;    beforefn.apply(this, arguments);    return self.apply(thi">
+<meta property="og:updated_time" content="2015-11-02T01:14:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="arguments & callee">
-<meta name="twitter:description" content="arguments: 该对象代表正在执行的函数和调用它的函数的参数。
-callee: 返回正被执行的 Function 对象，也就是所指定的 Function 对象的正文。
-
-12345678//递归调用(function(num) &amp;#123;  num++;  console.log(num);  if(num&amp;lt;5) &amp;#123;    arguments.callee(num);  &amp;">
+<meta name="twitter:title" content="before & after">
+<meta name="twitter:description" content="1234567891011121314151617181920212223242526Function.prototype.before = function(beforefn) &amp;#123;  var self = this;  return function()&amp;#123;    beforefn.apply(this, arguments);    return self.apply(thi">
 
 
 
@@ -96,7 +87,7 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
   };
 </script>
 
-  <title> arguments & callee | Bin 博客 </title>
+  <title> before & after | Bin 博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -229,7 +220,7 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
             
             
               
-                arguments & callee
+                before & after
               
             
           </h1>
@@ -238,8 +229,8 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-10-30T14:04:24+08:00" content="2015-10-30">
-              2015-10-30
+            <time itemprop="dateCreated" datetime="2015-11-02T09:02:07+08:00" content="2015-11-02">
+              2015-11-02
             </time>
           </span>
 
@@ -277,12 +268,8 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
       
 
       
-        <span itemprop="articleBody"><ul>
-<li><strong>arguments</strong>: 该对象代表正在执行的函数和调用它的函数的参数。</li>
-<li><strong>callee</strong>: 返回正被执行的 Function 对象，也就是所指定的 Function 对象的正文。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归调用</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  num++;</span><br><span class="line">  <span class="built_in">console</span>.log(num);</span><br><span class="line">  <span class="keyword">if</span>(num&lt;<span class="number">5</span>) &#123;</span><br><span class="line">    <span class="built_in">arguments</span>.callee(num);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">  alert(<span class="built_in">arguments</span>.length); <span class="comment">//实参长度</span></span><br><span class="line">  alert(<span class="built_in">arguments</span>.callee.length); <span class="comment">//形参长度</span></span><br><span class="line">&#125;</span><br><span class="line">test(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br></pre></td></tr></table></figure></span>
+        <span itemprop="articleBody"><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.before = <span class="function"><span class="keyword">function</span>(<span class="params">beforefn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    beforefn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">return</span> self.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">Function</span>.prototype.after = <span class="function"><span class="keyword">function</span>(<span class="params">afterfn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> result = self.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    afterfn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'func'</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'ok'</span>;</span><br><span class="line">&#125;;</span><br><span class="line">func = func.before(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'before'</span>);</span><br><span class="line">&#125;).after(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'after'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> r = func();</span><br><span class="line"><span class="built_in">console</span>.log(r);</span><br></pre></td></tr></table></figure>
+</span>
       
     </div>
 
@@ -299,16 +286,16 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/28/Function-prototype-bind/" rel="next" title="Function.prototype.bind">
-                <i class="fa fa-chevron-left"></i> Function.prototype.bind
+              <a href="/2015/10/30/arguments-callee/" rel="next" title="arguments & callee">
+                <i class="fa fa-chevron-left"></i> arguments & callee
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/02/before-after/" rel="prev" title="before & after">
-                before & after <i class="fa fa-chevron-right"></i>
+              <a href="/2015/11/02/currying-uncurrying/" rel="prev" title="currying & uncurrying">
+                currying & uncurrying <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
