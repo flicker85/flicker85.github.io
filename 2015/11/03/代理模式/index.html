@@ -65,22 +65,22 @@
 
 
 
-<meta name="description" content="策略模式: 定义了一系列的算法，并将每一个算法封装起来，而且使它们还可以相互替换。
+<meta name="description" content="代理模式: 为其它对象提供一种代理以控制对这个对象的访问。应用场景: 通过代理模式，可以对数据、请求等做二次封装、处理以后，再发送到目标对象。代理和原始对象保持统一接口，当需要时可以在代理与原始对象之间无缝切换。
 
-123456789101112131415var strategies = &amp;#123;  add: function(num1, num2) &amp;#123;    return num1+num2;  &amp;#125;,  subtract: function(num1, num2) &amp;#123;    return">
+123456789101112131415161718192021var shop = &amp;#123;  gift: &apos;rose&apos;,  send: function(target) &amp;#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="策略模式">
-<meta property="og:url" content="http://yoursite.com/2015/11/03/策略模式/index.html">
+<meta property="og:title" content="代理模式">
+<meta property="og:url" content="http://yoursite.com/2015/11/03/代理模式/index.html">
 <meta property="og:site_name" content="Bin 博客">
-<meta property="og:description" content="策略模式: 定义了一系列的算法，并将每一个算法封装起来，而且使它们还可以相互替换。
+<meta property="og:description" content="代理模式: 为其它对象提供一种代理以控制对这个对象的访问。应用场景: 通过代理模式，可以对数据、请求等做二次封装、处理以后，再发送到目标对象。代理和原始对象保持统一接口，当需要时可以在代理与原始对象之间无缝切换。
 
-123456789101112131415var strategies = &amp;#123;  add: function(num1, num2) &amp;#123;    return num1+num2;  &amp;#125;,  subtract: function(num1, num2) &amp;#123;    return">
-<meta property="og:updated_time" content="2015-11-03T06:16:19.000Z">
+123456789101112131415161718192021var shop = &amp;#123;  gift: &apos;rose&apos;,  send: function(target) &amp;#">
+<meta property="og:updated_time" content="2015-11-03T06:14:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="策略模式">
-<meta name="twitter:description" content="策略模式: 定义了一系列的算法，并将每一个算法封装起来，而且使它们还可以相互替换。
+<meta name="twitter:title" content="代理模式">
+<meta name="twitter:description" content="代理模式: 为其它对象提供一种代理以控制对这个对象的访问。应用场景: 通过代理模式，可以对数据、请求等做二次封装、处理以后，再发送到目标对象。代理和原始对象保持统一接口，当需要时可以在代理与原始对象之间无缝切换。
 
-123456789101112131415var strategies = &amp;#123;  add: function(num1, num2) &amp;#123;    return num1+num2;  &amp;#125;,  subtract: function(num1, num2) &amp;#123;    return">
+123456789101112131415161718192021var shop = &amp;#123;  gift: &apos;rose&apos;,  send: function(target) &amp;#">
 
 
 
@@ -93,7 +93,7 @@
   };
 </script>
 
-  <title> 策略模式 | Bin 博客 </title>
+  <title> 代理模式 | Bin 博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -226,7 +226,7 @@
             
             
               
-                策略模式
+                代理模式
               
             
           </h1>
@@ -235,7 +235,7 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-11-03T11:39:29+08:00" content="2015-11-03">
+            <time itemprop="dateCreated" datetime="2015-11-03T13:27:01+08:00" content="2015-11-03">
               2015-11-03
             </time>
           </span>
@@ -275,9 +275,9 @@
 
       
         <span itemprop="articleBody"><blockquote>
-<p><strong>策略模式:</strong> <em>定义了一系列的算法，并将每一个算法封装起来，而且使它们还可以相互替换。</em></p>
+<p><strong>代理模式:</strong> <em>为其它对象提供一种代理以控制对这个对象的访问。</em><br><strong>应用场景:</strong> <em>通过代理模式，可以对数据、请求等做二次封装、处理以后，再发送到目标对象。代理和原始对象保持统一接口，当需要时可以在代理与原始对象之间无缝切换。</em></p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> strategies = &#123;</span><br><span class="line">  add: <span class="function"><span class="keyword">function</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1+num2;</span><br><span class="line">  &#125;,</span><br><span class="line">  subtract: <span class="function"><span class="keyword">function</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1-num2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> calculate = <span class="function"><span class="keyword">function</span>(<span class="params">type, num1, num2</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> strategies[type](num1, num2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">alert(calculate(<span class="string">'add'</span>, <span class="number">200</span>, <span class="number">100</span>));</span><br><span class="line">alert(calculate(<span class="string">'subtract'</span>, <span class="number">200</span>, <span class="number">100</span>));</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> shop = &#123;</span><br><span class="line">  gift: <span class="string">'rose'</span>,</span><br><span class="line">  send: <span class="function"><span class="keyword">function</span>(<span class="params">target</span>) </span>&#123;</span><br><span class="line">    target.receive(<span class="keyword">this</span>.gift);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> courier = &#123;</span><br><span class="line">  receive: <span class="function"><span class="keyword">function</span>(<span class="params">gift</span>) </span>&#123;</span><br><span class="line">    customer.receive(gift);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> customer = &#123;</span><br><span class="line">  receive: <span class="function"><span class="keyword">function</span>(<span class="params">gift</span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">'receive '</span> + gift);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 商家 =&gt; 客户</span></span><br><span class="line">shop.send(customer);</span><br><span class="line"><span class="comment">// 代理模式: 商家 =&gt; 快递员 =&gt; 客户</span></span><br><span class="line">shop.send(courier);</span><br></pre></td></tr></table></figure>
 </span>
       
     </div>
@@ -297,17 +297,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/02/单例模式/" rel="next" title="单例模式">
-                <i class="fa fa-chevron-left"></i> 单例模式
+              <a href="/2015/11/03/策略模式/" rel="next" title="策略模式">
+                <i class="fa fa-chevron-left"></i> 策略模式
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/03/代理模式/" rel="prev" title="代理模式">
-                代理模式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

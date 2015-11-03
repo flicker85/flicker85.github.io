@@ -221,6 +221,100 @@
             
             
               
+                <a class="post-title-link" href="/2015/11/03/代理模式/" itemprop="url">
+                  代理模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-03T13:27:01+08:00" content="2015-11-03">
+              2015-11-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">前端开发</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+		  
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <blockquote>
+<p><strong>代理模式:</strong> <em>为其它对象提供一种代理以控制对这个对象的访问。</em><br><strong>应用场景:</strong> <em>通过代理模式，可以对数据、请求等做二次封装、处理以后，再发送到目标对象。代理和原始对象保持统一接口，当需要时可以在代理与原始对象之间无缝切换。</em></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> shop = &#123;</span><br><span class="line">  gift: <span class="string">'rose'</span>,</span><br><span class="line">  send: <span class="function"><span class="keyword">function</span>(<span class="params">target</span>) </span>&#123;</span><br><span class="line">    target.receive(<span class="keyword">this</span>.gift);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> courier = &#123;</span><br><span class="line">  receive: <span class="function"><span class="keyword">function</span>(<span class="params">gift</span>) </span>&#123;</span><br><span class="line">    customer.receive(gift);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> customer = &#123;</span><br><span class="line">  receive: <span class="function"><span class="keyword">function</span>(<span class="params">gift</span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">'receive '</span> + gift);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 商家 =&gt; 客户</span></span><br><span class="line">shop.send(customer);</span><br><span class="line"><span class="comment">// 代理模式: 商家 =&gt; 快递员 =&gt; 客户</span></span><br><span class="line">shop.send(courier);</span><br></pre></td></tr></table></figure>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2015/11/03/策略模式/" itemprop="url">
                   策略模式
                 </a>
@@ -990,7 +1084,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
