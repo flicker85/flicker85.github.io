@@ -49,7 +49,7 @@
 
 
 
-  <meta name="keywords" content="javascript," />
+  <meta name="keywords" content="javascript,js设计模式," />
 
 
 
@@ -65,22 +65,22 @@
 
 
 
-<meta name="description" content="惰性加载函数: 函数在第一次调用时覆盖并执行当前函数
+<meta name="description" content="迭代器模式: 提供一种方法顺序访问一个聚合对象中的各种元素，而又不暴露该对象的内部表示。
 
-1234567891011121314151617var func = function(type) &amp;#123;  switch(type) &amp;#123;    case &apos;a&apos;:      func = function() &amp;#123;        alert(&apos;a&apos;);      &amp;#125;      break;    case">
+12345678910111213141516171819202122232425262728var each = function(obj, callback) &amp;#123;  switch(Object.prototype.toString.call(obj)) &amp;#123;    case &apos;[obj">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lazy Function">
-<meta property="og:url" content="http://yoursite.com/2015/11/02/Lazy-Function/index.html">
+<meta property="og:title" content="迭代器模式">
+<meta property="og:url" content="http://yoursite.com/2015/11/03/迭代器模式/index.html">
 <meta property="og:site_name" content="Bin 博客">
-<meta property="og:description" content="惰性加载函数: 函数在第一次调用时覆盖并执行当前函数
+<meta property="og:description" content="迭代器模式: 提供一种方法顺序访问一个聚合对象中的各种元素，而又不暴露该对象的内部表示。
 
-1234567891011121314151617var func = function(type) &amp;#123;  switch(type) &amp;#123;    case &apos;a&apos;:      func = function() &amp;#123;        alert(&apos;a&apos;);      &amp;#125;      break;    case">
-<meta property="og:updated_time" content="2015-11-02T07:37:28.000Z">
+12345678910111213141516171819202122232425262728var each = function(obj, callback) &amp;#123;  switch(Object.prototype.toString.call(obj)) &amp;#123;    case &apos;[obj">
+<meta property="og:updated_time" content="2015-11-03T09:05:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lazy Function">
-<meta name="twitter:description" content="惰性加载函数: 函数在第一次调用时覆盖并执行当前函数
+<meta name="twitter:title" content="迭代器模式">
+<meta name="twitter:description" content="迭代器模式: 提供一种方法顺序访问一个聚合对象中的各种元素，而又不暴露该对象的内部表示。
 
-1234567891011121314151617var func = function(type) &amp;#123;  switch(type) &amp;#123;    case &apos;a&apos;:      func = function() &amp;#123;        alert(&apos;a&apos;);      &amp;#125;      break;    case">
+12345678910111213141516171819202122232425262728var each = function(obj, callback) &amp;#123;  switch(Object.prototype.toString.call(obj)) &amp;#123;    case &apos;[obj">
 
 
 
@@ -93,7 +93,7 @@
   };
 </script>
 
-  <title> Lazy Function | Bin 博客 </title>
+  <title> 迭代器模式 | Bin 博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -226,7 +226,7 @@
             
             
               
-                Lazy Function
+                迭代器模式
               
             
           </h1>
@@ -235,8 +235,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-11-02T15:16:04+08:00" content="2015-11-02">
-              2015-11-02
+            <time itemprop="dateCreated" datetime="2015-11-03T17:00:40+08:00" content="2015-11-03">
+              2015-11-03
             </time>
           </span>
 
@@ -275,10 +275,10 @@
 
       
         <span itemprop="articleBody"><blockquote>
-<p><strong>惰性加载函数:</strong> <em>函数在第一次调用时覆盖并执行当前函数</em></p>
+<p><strong>迭代器模式:</strong> <em>提供一种方法顺序访问一个聚合对象中的各种元素，而又不暴露该对象的内部表示。</em></p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params">type</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span>(type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'a'</span>:</span><br><span class="line">      func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="string">'a'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'b'</span>:</span><br><span class="line">      func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="string">'b'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  func(type);</span><br><span class="line">&#125;</span><br><span class="line">func(<span class="string">'a'</span>);</span><br><span class="line">func(<span class="string">'b'</span>);</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> addEvent = <span class="function"><span class="keyword">function</span>(<span class="params">elem, type, handler</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">window</span>.addEventListener) &#123;</span><br><span class="line">    addEvent = <span class="function"><span class="keyword">function</span>(<span class="params">elem, type, handler</span>) </span>&#123;</span><br><span class="line">      elem.addEventListener(type, handler, <span class="literal">false</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">window</span>.attachEvent) &#123;</span><br><span class="line">    addEvent = <span class="function"><span class="keyword">function</span>(<span class="params">elem, type, handler</span>) </span>&#123;</span><br><span class="line">      elem.attachEvent(<span class="string">'on'</span>+type, handler);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  addEvent(elem, type, handler);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> each = <span class="function"><span class="keyword">function</span>(<span class="params">obj, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span>(<span class="built_in">Object</span>.prototype.toString.call(obj)) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'[object Array]'</span>:</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,l=obj.length;i&lt;l;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(callback.call(obj[i], i, obj[i]) === <span class="literal">false</span>) &#123;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'[object Object]'</span>:</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> obj) &#123;</span><br><span class="line">        <span class="keyword">if</span>(callback.call(obj[k], k, obj[k]) === <span class="literal">false</span>) &#123;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">each([<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">i, o</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">  alert(i+<span class="string">' : '</span>+o);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">each(&#123;a:<span class="number">1</span>,b:<span class="number">2</span>,c:<span class="number">3</span>&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">k, v</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">  alert(k+<span class="string">' : '</span>+v);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</span>
       
     </div>
 
@@ -288,6 +288,8 @@
           
             <a href="/tags/javascript/" rel="tag">#javascript</a>
           
+            <a href="/tags/js设计模式/" rel="tag">#js设计模式</a>
+          
         </div>
       
 
@@ -295,17 +297,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/02/currying-uncurrying/" rel="next" title="currying & uncurrying">
-                <i class="fa fa-chevron-left"></i> currying & uncurrying
+              <a href="/2015/11/03/代理模式/" rel="next" title="代理模式">
+                <i class="fa fa-chevron-left"></i> 代理模式
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/02/Delay-Function/" rel="prev" title="Delay Function">
-                Delay Function <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
