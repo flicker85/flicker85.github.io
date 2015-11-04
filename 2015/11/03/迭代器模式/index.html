@@ -43,12 +43,6 @@
 <link href="/css/main.css?v=5.0.0" rel="stylesheet" type="text/css" />
 
 
-
-  <meta name="description" content="每天的太阳都是新的，不要辜负了美好的晨光。" />
-
-
-
-
   <meta name="keywords" content="javascript,js设计模式," />
 
 
@@ -85,6 +79,7 @@
 
 
 <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
     sidebar: '[object Object]',
@@ -98,15 +93,6 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
   
 
 
@@ -253,6 +239,10 @@
   
   
 
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -272,7 +262,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2015-11-03T17:00:40+08:00" content="2015-11-03">
               2015-11-03
             </time>
@@ -280,7 +273,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/前端开发/" itemprop="url" rel="index">
@@ -307,23 +304,25 @@
           
 
           
-		  
+
+          
+          
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <span itemprop="articleBody"><blockquote>
+        <blockquote>
 <p><strong>迭代器模式:</strong> <em>提供一种方法顺序访问一个聚合对象中的各种元素，而又不暴露该对象的内部表示。</em></p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> each = <span class="function"><span class="keyword">function</span>(<span class="params">obj, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span>(<span class="built_in">Object</span>.prototype.toString.call(obj)) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'[object Array]'</span>:</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,l=obj.length;i&lt;l;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(callback.call(obj[i], i, obj[i]) === <span class="literal">false</span>) &#123;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'[object Object]'</span>:</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> obj) &#123;</span><br><span class="line">        <span class="keyword">if</span>(callback.call(obj[k], k, obj[k]) === <span class="literal">false</span>) &#123;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">each([<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">i, o</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">  alert(i+<span class="string">' : '</span>+o);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">each(&#123;a:<span class="number">1</span>,b:<span class="number">2</span>,c:<span class="number">3</span>&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">k, v</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">  alert(k+<span class="string">' : '</span>+v);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</span>
+
       
     </div>
 
@@ -487,14 +486,20 @@
 
       
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
           <div class="post-toc">
+            
+              
             
             
               <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
         </section>
       
 
@@ -562,7 +567,7 @@
   
 
 
-  <script type="text/javascript" src="/js/src/helpers.js?v=5.0.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.0"></script>
 
   <script type="text/javascript" src="/js/src/motion.js?v=5.0.0"></script>
 
@@ -571,9 +576,16 @@
   
   
 
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.0"></script>
+
+
+
   
   
-<script type="text/javascript" src="/js/src/bootstrap.scrollspy.js?v=5.0.0"></script>
+<script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.0"></script>
 
 <script type="text/javascript" id="sidebar.toc.highlight">
   $(document).ready(function () {
@@ -653,7 +665,7 @@
 
     function tocOverflowIndicator (indicator, action) {
       var $indicator = $(indicator);
-      var opacity = action === 'show' ? 0.4 : 0;
+      var opacity = action === 'show' ? 1 : 0;
       $indicator.velocity ?
         $indicator.velocity('stop').velocity({
           opacity: opacity

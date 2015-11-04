@@ -43,12 +43,6 @@
 <link href="/css/main.css?v=5.0.0" rel="stylesheet" type="text/css" />
 
 
-
-  <meta name="description" content="每天的太阳都是新的，不要辜负了美好的晨光。" />
-
-
-
-
   <meta name="keywords" content="javascript," />
 
 
@@ -88,6 +82,7 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
 
 
 <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
     sidebar: '[object Object]',
@@ -101,15 +96,6 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
   
 
 
@@ -256,6 +242,10 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
   
   
 
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -275,7 +265,10 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2015-10-30T14:04:24+08:00" content="2015-10-30">
               2015-10-30
             </time>
@@ -283,7 +276,11 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/前端开发/" itemprop="url" rel="index">
@@ -310,24 +307,26 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
           
 
           
-		  
+
+          
+          
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <span itemprop="articleBody"><ul>
+        <ul>
 <li><strong>arguments:</strong> 该对象代表正在执行的函数和调用它的函数的参数。</li>
 <li><strong>callee:</strong> 返回正被执行的 Function 对象，也就是所指定的 Function 对象的正文。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归调用</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">  num++;</span><br><span class="line">  <span class="built_in">console</span>.log(num);</span><br><span class="line">  <span class="keyword">if</span>(num&lt;<span class="number">5</span>) &#123;</span><br><span class="line">    <span class="built_in">arguments</span>.callee(num);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">  alert(<span class="built_in">arguments</span>.length); <span class="comment">//实参长度</span></span><br><span class="line">  alert(<span class="built_in">arguments</span>.callee.length); <span class="comment">//形参长度</span></span><br><span class="line">&#125;</span><br><span class="line">test(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br></pre></td></tr></table></figure></span>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">  alert(<span class="built_in">arguments</span>.length); <span class="comment">//实参长度</span></span><br><span class="line">  alert(<span class="built_in">arguments</span>.callee.length); <span class="comment">//形参长度</span></span><br><span class="line">&#125;</span><br><span class="line">test(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -493,14 +492,20 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
 
       
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
           <div class="post-toc">
+            
+              
             
             
               <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
         </section>
       
 
@@ -568,7 +573,7 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
   
 
 
-  <script type="text/javascript" src="/js/src/helpers.js?v=5.0.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.0"></script>
 
   <script type="text/javascript" src="/js/src/motion.js?v=5.0.0"></script>
 
@@ -577,9 +582,16 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
   
   
 
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.0"></script>
+
+
+
   
   
-<script type="text/javascript" src="/js/src/bootstrap.scrollspy.js?v=5.0.0"></script>
+<script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.0"></script>
 
 <script type="text/javascript" id="sidebar.toc.highlight">
   $(document).ready(function () {
@@ -659,7 +671,7 @@ callee: 返回正被执行的 Function 对象，也就是所指定的 Function �
 
     function tocOverflowIndicator (indicator, action) {
       var $indicator = $(indicator);
-      var opacity = action === 'show' ? 0.4 : 0;
+      var opacity = action === 'show' ? 1 : 0;
       $indicator.velocity ?
         $indicator.velocity('stop').velocity({
           opacity: opacity

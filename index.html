@@ -43,12 +43,6 @@
 <link href="/css/main.css?v=5.0.0" rel="stylesheet" type="text/css" />
 
 
-
-  <meta name="description" content="每天的太阳都是新的，不要辜负了美好的晨光。" />
-
-
-
-
   <meta name="keywords" content="Hexo, NexT" />
 
 
@@ -78,6 +72,7 @@
 
 
 <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Pisces',
     sidebar: '[object Object]',
@@ -91,15 +86,6 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  <!--[if lte IE 8]>
-  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
-    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
-           style='margin-left:auto;margin-right:auto;display: block;'/>
-    </a>
-  </div>
-<![endif]-->
   
 
 
@@ -242,9 +228,19 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+
+    
+
+    
+    
+
     
       
 
+  
+  
+
+  
   
   
 
@@ -259,6 +255,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/2015/11/03/迭代器模式/" itemprop="url">
                   迭代器模式
                 </a>
@@ -269,7 +266,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2015-11-03T17:00:40+08:00" content="2015-11-03">
               2015-11-03
             </time>
@@ -277,7 +277,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/前端开发/" itemprop="url" rel="index">
@@ -304,28 +308,28 @@
           
 
           
-		  
+
+          
+          
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <blockquote>
+          
+            <blockquote>
 <p><strong>迭代器模式:</strong> <em>提供一种方法顺序访问一个聚合对象中的各种元素，而又不暴露该对象的内部表示。</em></p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> each = <span class="function"><span class="keyword">function</span>(<span class="params">obj, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span>(<span class="built_in">Object</span>.prototype.toString.call(obj)) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'[object Array]'</span>:</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>,l=obj.length;i&lt;l;i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(callback.call(obj[i], i, obj[i]) === <span class="literal">false</span>) &#123;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'[object Object]'</span>:</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> obj) &#123;</span><br><span class="line">        <span class="keyword">if</span>(callback.call(obj[k], k, obj[k]) === <span class="literal">false</span>) &#123;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">each([<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">i, o</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">  alert(i+<span class="string">' : '</span>+o);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">each(&#123;a:<span class="number">1</span>,b:<span class="number">2</span>,c:<span class="number">3</span>&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">k, v</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">  alert(k+<span class="string">' : '</span>+v);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-            
-          </span>
+          
         
       
     </div>
@@ -349,6 +353,10 @@
   
   
 
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -360,6 +368,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/2015/11/03/代理模式/" itemprop="url">
                   代理模式
                 </a>
@@ -370,7 +379,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2015-11-03T13:27:01+08:00" content="2015-11-03">
               2015-11-03
             </time>
@@ -378,7 +390,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/前端开发/" itemprop="url" rel="index">
@@ -405,28 +421,28 @@
           
 
           
-		  
+
+          
+          
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <blockquote>
+          
+            <blockquote>
 <p><strong>代理模式:</strong> <em>为其它对象提供一种代理以控制对这个对象的访问。</em><br><strong>应用场景:</strong> <em>通过代理模式，可以对数据、请求等做二次封装、处理以后，再发送到目标对象。代理和原始对象保持统一接口，当需要时可以在代理与原始对象之间无缝切换。</em></p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> shop = &#123;</span><br><span class="line">  gift: <span class="string">'rose'</span>,</span><br><span class="line">  send: <span class="function"><span class="keyword">function</span>(<span class="params">target</span>) </span>&#123;</span><br><span class="line">    target.receive(<span class="keyword">this</span>.gift);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> courier = &#123;</span><br><span class="line">  receive: <span class="function"><span class="keyword">function</span>(<span class="params">gift</span>) </span>&#123;</span><br><span class="line">    customer.receive(gift);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> customer = &#123;</span><br><span class="line">  receive: <span class="function"><span class="keyword">function</span>(<span class="params">gift</span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">'receive '</span> + gift);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 商家 =&gt; 客户</span></span><br><span class="line">shop.send(customer);</span><br><span class="line"><span class="comment">// 代理模式: 商家 =&gt; 快递员 =&gt; 客户</span></span><br><span class="line">shop.send(courier);</span><br></pre></td></tr></table></figure>
 
-            
-          </span>
+          
         
       
     </div>
@@ -450,6 +466,10 @@
   
   
 
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -461,6 +481,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/2015/11/03/策略模式/" itemprop="url">
                   策略模式
                 </a>
@@ -471,7 +492,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2015-11-03T11:39:29+08:00" content="2015-11-03">
               2015-11-03
             </time>
@@ -479,7 +503,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/前端开发/" itemprop="url" rel="index">
@@ -506,28 +534,28 @@
           
 
           
-		  
+
+          
+          
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <blockquote>
+          
+            <blockquote>
 <p><strong>策略模式:</strong> <em>定义了一系列的算法，并将每一个算法封装起来，而且使它们还可以相互替换。</em></p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> strategies = &#123;</span><br><span class="line">  add: <span class="function"><span class="keyword">function</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1+num2;</span><br><span class="line">  &#125;,</span><br><span class="line">  subtract: <span class="function"><span class="keyword">function</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1-num2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> calculate = <span class="function"><span class="keyword">function</span>(<span class="params">type, num1, num2</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> strategies[type](num1, num2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">alert(calculate(<span class="string">'add'</span>, <span class="number">200</span>, <span class="number">100</span>));</span><br><span class="line">alert(calculate(<span class="string">'subtract'</span>, <span class="number">200</span>, <span class="number">100</span>));</span><br></pre></td></tr></table></figure>
 
-            
-          </span>
+          
         
       
     </div>
@@ -551,6 +579,10 @@
   
   
 
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -562,6 +594,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/2015/11/02/单例模式/" itemprop="url">
                   单例模式
                 </a>
@@ -572,7 +605,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2015-11-02T16:15:42+08:00" content="2015-11-02">
               2015-11-02
             </time>
@@ -580,7 +616,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/前端开发/" itemprop="url" rel="index">
@@ -607,28 +647,28 @@
           
 
           
-		  
+
+          
+          
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <blockquote>
+          
+            <blockquote>
 <p><strong>单例模式:</strong> <em>保证系统中一个类只有一个实例而且该实例易于外界访问。</em></p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> getSingle = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> obj;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> obj || (obj = fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> create = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'create person'</span>);</span><br><span class="line">  <span class="keyword">var</span> person = &#123;name: <span class="string">'zhangsan'</span>, age: <span class="number">20</span>&#125;;</span><br><span class="line">  <span class="keyword">return</span> person;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> createSingle = getSingle(create);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = createSingle();</span><br><span class="line"><span class="keyword">var</span> p2 = createSingle();</span><br><span class="line"><span class="built_in">console</span>.log(p1);</span><br><span class="line"><span class="built_in">console</span>.log(p2);</span><br><span class="line">alert(p1===p2);</span><br></pre></td></tr></table></figure>
 
-            
-          </span>
+          
         
       
     </div>
@@ -652,6 +692,10 @@
   
   
 
+  
+  
+  
+
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
@@ -663,6 +707,7 @@
             
             
               
+                
                 <a class="post-title-link" href="/2015/11/02/Delay-Function/" itemprop="url">
                   Delay Function
                 </a>
@@ -673,7 +718,10 @@
 
         <div class="post-meta">
           <span class="post-time">
-            发表于
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
             <time itemprop="dateCreated" datetime="2015-11-02T15:35:17+08:00" content="2015-11-02">
               2015-11-02
             </time>
@@ -681,7 +729,11 @@
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/前端开发/" itemprop="url" rel="index">
@@ -708,25 +760,25 @@
           
 
           
-		  
+
+          
+          
         </div>
       </header>
     
 
 
-    <div class="post-body">
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
         
-          <span itemprop="articleBody">
-            
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> delay = <span class="function"><span class="keyword">function</span>(<span class="params">fn, interval</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> timer,</span><br><span class="line">      first = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> args = <span class="built_in">arguments</span>,</span><br><span class="line">        self = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(first) &#123;</span><br><span class="line">      fn.apply(self, args);</span><br><span class="line">      <span class="keyword">return</span> first = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(timer) &#123; <span class="keyword">return</span> <span class="literal">false</span>; &#125;</span><br><span class="line"></span><br><span class="line">    timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      clearTimeout(timer);</span><br><span class="line">      timer = <span class="literal">null</span>;</span><br><span class="line">      fn.apply(self, args);</span><br><span class="line">    &#125;, interval || <span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.onresize = delay(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'resize'</span>);</span><br><span class="line">&#125;, <span class="number">2000</span>);</span><br></pre></td></tr></table></figure>
+          
+            <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> delay = <span class="function"><span class="keyword">function</span>(<span class="params">fn, interval</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> timer,</span><br><span class="line">      first = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> args = <span class="built_in">arguments</span>,</span><br><span class="line">        self = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(first) &#123;</span><br><span class="line">      fn.apply(self, args);</span><br><span class="line">      <span class="keyword">return</span> first = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(timer) &#123; <span class="keyword">return</span> <span class="literal">false</span>; &#125;</span><br><span class="line"></span><br><span class="line">    timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      clearTimeout(timer);</span><br><span class="line">      timer = <span class="literal">null</span>;</span><br><span class="line">      fn.apply(self, args);</span><br><span class="line">    &#125;, interval || <span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.onresize = delay(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'resize'</span>);</span><br><span class="line">&#125;, <span class="number">2000</span>);</span><br></pre></td></tr></table></figure>
 
-            
-          </span>
+          
         
       
     </div>
@@ -745,6 +797,7 @@
 
 
     
+
   </section>
 
   
@@ -902,7 +955,7 @@
   
 
 
-  <script type="text/javascript" src="/js/src/helpers.js?v=5.0.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.0"></script>
 
   <script type="text/javascript" src="/js/src/motion.js?v=5.0.0"></script>
 
@@ -910,6 +963,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.0"></script>
+
+
 
   
 
