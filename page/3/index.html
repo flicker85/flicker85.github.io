@@ -62,7 +62,7 @@
 <meta name="description" content="每天的太阳都是新的，不要辜负了美好的晨光。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Bin 博客">
-<meta property="og:url" content="http://flicker85.github.io/archives/2015/10/index.html">
+<meta property="og:url" content="http://flicker85.github.io/page/3/index.html">
 <meta property="og:site_name" content="Bin 博客">
 <meta property="og:description" content="每天的太阳都是新的，不要辜负了美好的晨光。">
 <meta name="twitter:card" content="summary">
@@ -81,7 +81,7 @@
   };
 </script>
 
-  <title> 归档 | Bin 博客 </title>
+  <title> Bin 博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -108,7 +108,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -225,96 +227,126 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 11 篇日志。 继续努力。
-    </span>
+  <section id="posts" class="posts-expand">
 
     
 
-      
+    
+    
       
       
 
       
+    
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2015">2015</h2>
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/10/28/Function-prototype-bind/" itemprop="url">
+                  Function.prototype.bind
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-10-28T10:15:39+08:00" content="2015-10-28">
+              2015-10-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">前端开发</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/10/28/Function-prototype-bind/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/28/Function-prototype-bind/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
         </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2015/10/30/arguments-callee/" itemprop="url">
-              
-                <span itemprop="name">arguments & callee</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-10-30T14:04:24+08:00"
-              content="2015-10-30" >
-          10-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+      </header>
     
 
-      
-      
-      
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
         
-            <a class="post-title-link" href="/2015/10/28/Function-prototype-bind/" itemprop="url">
-              
-                <span itemprop="name">Function.prototype.bind</span>
-              
-            </a>
+          
+            <p>IE8及以下浏览器不支持Function.protoype.bind函数。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">Function</span>.prototype.bind) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'this is custom bind function.'</span>);</span><br><span class="line">  <span class="built_in">Function</span>.prototype.bind = <span class="function"><span class="keyword">function</span>(<span class="params">oThis</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> self = <span class="keyword">this</span>,</span><br><span class="line">        args = [].slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Function</span>.prototype.call.apply(self, [].concat.apply(args, <span class="built_in">arguments</span>));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.printName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">  <span class="built_in">console</span>.log([].slice.apply(<span class="built_in">arguments</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person(<span class="string">'ZhangSan'</span>);</span><br><span class="line"><span class="keyword">var</span> p2 = &#123;name: <span class="string">'LiSi'</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> p3 = &#123;name: <span class="string">'WangWu'</span>&#125;;</span><br><span class="line"></span><br><span class="line">p1.printName(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">p1.printName.bind(p2)(<span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">p1.printName.bind(p3, <span class="number">3</span>, <span class="number">4</span>)(<span class="number">5</span>, <span class="number">6</span>);</span><br></pre></td></tr></table></figure></p>
+
+          
         
-      </h1>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-10-28T10:15:39+08:00"
-              content="2015-10-28" >
-          10-28
-        </time>
-      </div>
+    <footer class="post-footer">
+      
 
-    </header>
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
-
 
 
     
@@ -322,6 +354,9 @@
   </section>
 
   
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
 
 
 
@@ -490,12 +525,6 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
-
 
   
 
