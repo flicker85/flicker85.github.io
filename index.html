@@ -392,31 +392,32 @@
   };
 };
 
+<span class="xml"><span class="comment">&lt;!-- more --&gt;</span>
 
-<span class="keyword">var</span> waiter = <span class="keyword">new</span> Waiter();
-<span class="keyword">var</span> first = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-  <span class="keyword">var</span> dtd = waiter.Deferred();
-  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-    <span class="built_in">console</span>.log(<span class="string">'first finish'</span>);
+var waiter = new Waiter();
+var first = function() {
+  var dtd = waiter.Deferred();
+  setTimeout(function() {
+    console.log('first finish');
     dtd.resolve();
-  }, <span class="number">2000</span>);
-  <span class="keyword">return</span> dtd;
+  }, 2000);
+  return dtd;
 }();
-<span class="keyword">var</span> second = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-  <span class="keyword">var</span> dtd = waiter.Deferred();
-  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-    <span class="built_in">console</span>.log(<span class="string">'second finish'</span>);
+var second = function() {
+  var dtd = waiter.Deferred();
+  setTimeout(function() {
+    console.log('second finish');
     dtd.resolve();
-  }, <span class="number">5000</span>);
-  <span class="keyword">return</span> dtd;
+  }, 5000);
+  return dtd;
 }();
-waiter.when(first, second).done(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-  <span class="built_in">console</span>.log(<span class="string">'success'</span>);
-}, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-  <span class="built_in">console</span>.log(<span class="string">'success again'</span>);
-}).fail(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-  <span class="built_in">console</span>.log(<span class="string">'fail'</span>);
-});
+waiter.when(first, second).done(function() {
+  console.log('success');
+}, function() {
+  console.log('success again');
+}).fail(function() {
+  console.log('fail');
+});</span>
 </code></pre>
 
           
