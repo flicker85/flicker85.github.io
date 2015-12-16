@@ -77,7 +77,7 @@ var Waiter = function() {
       doneArr = [],
       failArr = [],
       slice = Array.prototype.s">
-<meta property="og:updated_time" content="2015-12-16T07:51:11.000Z">
+<meta property="og:updated_time" content="2015-12-16T07:53:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="异步等待">
 <meta name="twitter:description" content="等待者模式: 通过对多个异步进程监听，来触发未来发生的动作。应用场景: 对setTimeout、ajax等异步操作进行监听，当指定的多个异步操作完成后再统一执行回调函数。
@@ -398,32 +398,30 @@ var Waiter = function() {
   };
 };
 
-<span class="xml"><span class="comment">&lt;!-- more --&gt;</span>
-
-var waiter = new Waiter();
-var first = function() {
-  var dtd = waiter.Deferred();
-  setTimeout(function() {
-    console.log('first finish');
+<span class="keyword">var</span> waiter = <span class="keyword">new</span> Waiter();
+<span class="keyword">var</span> first = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="keyword">var</span> dtd = waiter.Deferred();
+  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(<span class="string">'first finish'</span>);
     dtd.resolve();
-  }, 2000);
-  return dtd;
+  }, <span class="number">2000</span>);
+  <span class="keyword">return</span> dtd;
 }();
-var second = function() {
-  var dtd = waiter.Deferred();
-  setTimeout(function() {
-    console.log('second finish');
+<span class="keyword">var</span> second = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="keyword">var</span> dtd = waiter.Deferred();
+  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(<span class="string">'second finish'</span>);
     dtd.resolve();
-  }, 5000);
-  return dtd;
+  }, <span class="number">5000</span>);
+  <span class="keyword">return</span> dtd;
 }();
-waiter.when(first, second).done(function() {
-  console.log('success');
-}, function() {
-  console.log('success again');
-}).fail(function() {
-  console.log('fail');
-});</span>
+waiter.when(first, second).done(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="built_in">console</span>.log(<span class="string">'success'</span>);
+}, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="built_in">console</span>.log(<span class="string">'success again'</span>);
+}).fail(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="built_in">console</span>.log(<span class="string">'fail'</span>);
+});
 </code></pre>
 
       
