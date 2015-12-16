@@ -233,15 +233,209 @@
 
     
     
+
+    
       
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/12/16/异步等待/" itemprop="url">
+                  异步等待
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-16T15:35:42+08:00" content="2015-12-16">
+              2015-12-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/前端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">前端开发</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/16/异步等待/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/16/异步等待/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
-        
-        
-        
       
 
       
-    
+        
+          
+            <blockquote>
+<p><strong>等待者模式:</strong> <em>通过对多个异步进程监听，来触发未来发生的动作。</em><br><strong>应用场景:</strong> <em>对setTimeout、ajax等异步操作进行监听，当指定的多个异步操作完成后再统一执行回调函数。</em></p>
+</blockquote>
+<pre><code class="js"><span class="keyword">var</span> Waiter = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="keyword">var</span> dfd = [],
+      doneArr = [],
+      failArr = [],
+      slice = <span class="built_in">Array</span>.prototype.slice,
+      that = <span class="keyword">this</span>;
+
+  <span class="keyword">var</span> <span class="built_in">Promise</span> = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="keyword">this</span>.resolved = <span class="literal">false</span>;
+    <span class="keyword">this</span>.rejected = <span class="literal">false</span>;
+  };
+
+  <span class="built_in">Promise</span>.prototype = {
+    resolve: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+      <span class="keyword">this</span>.resolved = <span class="literal">true</span>;
+      <span class="keyword">if</span>(!dfd.length) <span class="keyword">return</span>;
+      <span class="keyword">for</span>(<span class="keyword">var</span> i=dfd.length-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--) {
+        <span class="keyword">if</span>(dfd[i] &amp;&amp; !dfd[i].resolved || dfd[i].rejected) {
+          <span class="keyword">return</span>;
+        }
+        dfd.splice(i,<span class="number">1</span>);
+      };
+      _exec(doneArr, <span class="keyword">this</span>);
+    },
+    reject: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+      <span class="keyword">this</span>.rejected = <span class="literal">true</span>;
+      <span class="keyword">if</span>(!dfd.length) <span class="keyword">return</span>;
+      dfd.splice(<span class="number">0</span>);
+      _exec(failArr);
+    }
+  };
+
+  <span class="keyword">this</span>.Deferred = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>();
+  };
+
+  <span class="function"><span class="keyword">function</span> <span class="title">_exec</span>(<span class="params">arr</span>) </span>{
+    <span class="keyword">var</span> i = <span class="number">0</span>,
+        len = arr.length;
+    <span class="keyword">for</span>(;i&lt;len;i++) {
+      <span class="keyword">try</span>{
+        arr[i] &amp;&amp; arr[i]();
+      } <span class="keyword">catch</span>(e) {}
+    }
+  };
+  that.when = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    dfd = slice.call(<span class="built_in">arguments</span>);
+    <span class="keyword">var</span> i = dfd.length;
+    <span class="keyword">for</span>(--i; i&gt;=<span class="number">0</span>; i--) {
+      <span class="keyword">if</span>(!dfd[i] || dfd[i].resolved || dfd[i].rejected || !dfd[i] <span class="keyword">instanceof</span> <span class="built_in">Promise</span>) {
+        dfd.splice(i,<span class="number">1</span>);
+      };
+    };
+    <span class="keyword">return</span> that;
+  };
+  that.done = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    doneArr = doneArr.concat(slice.call(<span class="built_in">arguments</span>));
+    <span class="keyword">return</span> that;
+  };
+  that.fail = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    failArr = failArr.concat(slice.call(<span class="built_in">arguments</span>));
+    <span class="keyword">return</span> that;
+  };
+};
+
+
+<span class="keyword">var</span> waiter = <span class="keyword">new</span> Waiter();
+<span class="keyword">var</span> first = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="keyword">var</span> dtd = waiter.Deferred();
+  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(<span class="string">'first finish'</span>);
+    dtd.resolve();
+  }, <span class="number">2000</span>);
+  <span class="keyword">return</span> dtd;
+}();
+<span class="keyword">var</span> second = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="keyword">var</span> dtd = waiter.Deferred();
+  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(<span class="string">'second finish'</span>);
+    dtd.resolve();
+  }, <span class="number">5000</span>);
+  <span class="keyword">return</span> dtd;
+}();
+waiter.when(first, second).done(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="built_in">console</span>.log(<span class="string">'success'</span>);
+}, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="built_in">console</span>.log(<span class="string">'success again'</span>);
+}).fail(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="built_in">console</span>.log(<span class="string">'fail'</span>);
+});
+</code></pre>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -696,119 +890,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/11/02/单例模式/" itemprop="url">
-                  单例模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-11-02T16:15:42+08:00" content="2015-11-02">
-              2015-11-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/前端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">前端开发</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/11/02/单例模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/02/单例模式/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p><strong>单例模式:</strong> <em>保证系统中一个类只有一个实例而且该实例易于外界访问。</em></p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> getSingle = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> obj;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> obj || (obj = fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> create = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'create person'</span>);</span><br><span class="line">  <span class="keyword">var</span> person = &#123;name: <span class="string">'zhangsan'</span>, age: <span class="number">20</span>&#125;;</span><br><span class="line">  <span class="keyword">return</span> person;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> createSingle = getSingle(create);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = createSingle();</span><br><span class="line"><span class="keyword">var</span> p2 = createSingle();</span><br><span class="line"><span class="built_in">console</span>.log(p1);</span><br><span class="line"><span class="built_in">console</span>.log(p2);</span><br><span class="line">alert(p1===p2);</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -855,7 +936,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

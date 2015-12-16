@@ -43,7 +43,7 @@
 <link href="/css/main.css?v=5.0.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="javascript,js设计模式," />
+  <meta name="keywords" content="javascript," />
 
 
 
@@ -59,22 +59,34 @@
 
 
 
-<meta name="description" content="单例模式: 保证系统中一个类只有一个实例而且该实例易于外界访问。
+<meta name="description" content="等待者模式: 通过对多个异步进程监听，来触发未来发生的动作。应用场景: 对setTimeout、ajax等异步操作进行监听，当指定的多个异步操作完成后再统一执行回调函数。
 
-1234567891011121314151617181920var getSingle = function(fn) &amp;#123;  var obj;  return function() &amp;#123;    return obj || (obj = fn.apply(this, arguments));  &amp;#125;&amp;#12">
+var Waiter = function() {
+  var dfd = [],
+      doneArr = [],
+      failArr = [],
+      slice = Array.prototype.s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单例模式">
-<meta property="og:url" content="http://flicker85.github.io/2015/11/02/单例模式/index.html">
+<meta property="og:title" content="异步等待">
+<meta property="og:url" content="http://flicker85.github.io/2015/12/16/异步等待/index.html">
 <meta property="og:site_name" content="Bin 博客">
-<meta property="og:description" content="单例模式: 保证系统中一个类只有一个实例而且该实例易于外界访问。
+<meta property="og:description" content="等待者模式: 通过对多个异步进程监听，来触发未来发生的动作。应用场景: 对setTimeout、ajax等异步操作进行监听，当指定的多个异步操作完成后再统一执行回调函数。
 
-1234567891011121314151617181920var getSingle = function(fn) &amp;#123;  var obj;  return function() &amp;#123;    return obj || (obj = fn.apply(this, arguments));  &amp;#125;&amp;#12">
-<meta property="og:updated_time" content="2015-11-03T05:21:27.000Z">
+var Waiter = function() {
+  var dfd = [],
+      doneArr = [],
+      failArr = [],
+      slice = Array.prototype.s">
+<meta property="og:updated_time" content="2015-12-16T07:45:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="单例模式">
-<meta name="twitter:description" content="单例模式: 保证系统中一个类只有一个实例而且该实例易于外界访问。
+<meta name="twitter:title" content="异步等待">
+<meta name="twitter:description" content="等待者模式: 通过对多个异步进程监听，来触发未来发生的动作。应用场景: 对setTimeout、ajax等异步操作进行监听，当指定的多个异步操作完成后再统一执行回调函数。
 
-1234567891011121314151617181920var getSingle = function(fn) &amp;#123;  var obj;  return function() &amp;#123;    return obj || (obj = fn.apply(this, arguments));  &amp;#125;&amp;#12">
+var Waiter = function() {
+  var dfd = [],
+      doneArr = [],
+      failArr = [],
+      slice = Array.prototype.s">
 
 
 
@@ -88,7 +100,7 @@
   };
 </script>
 
-  <title> 单例模式 | Bin 博客 </title>
+  <title> 异步等待 | Bin 博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -254,7 +266,7 @@
             
             
               
-                单例模式
+                异步等待
               
             
           </h1>
@@ -266,8 +278,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-11-02T16:15:42+08:00" content="2015-11-02">
-              2015-11-02
+            <time itemprop="dateCreated" datetime="2015-12-16T15:35:42+08:00" content="2015-12-16">
+              2015-12-16
             </time>
           </span>
 
@@ -296,8 +308,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/11/02/单例模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/02/单例模式/" itemprop="commentsCount"></span>
+                <a href="/2015/12/16/异步等待/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/16/异步等待/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -319,9 +331,99 @@
 
       
         <blockquote>
-<p><strong>单例模式:</strong> <em>保证系统中一个类只有一个实例而且该实例易于外界访问。</em></p>
+<p><strong>等待者模式:</strong> <em>通过对多个异步进程监听，来触发未来发生的动作。</em><br><strong>应用场景:</strong> <em>对setTimeout、ajax等异步操作进行监听，当指定的多个异步操作完成后再统一执行回调函数。</em></p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> getSingle = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> obj;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> obj || (obj = fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> create = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'create person'</span>);</span><br><span class="line">  <span class="keyword">var</span> person = &#123;name: <span class="string">'zhangsan'</span>, age: <span class="number">20</span>&#125;;</span><br><span class="line">  <span class="keyword">return</span> person;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> createSingle = getSingle(create);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = createSingle();</span><br><span class="line"><span class="keyword">var</span> p2 = createSingle();</span><br><span class="line"><span class="built_in">console</span>.log(p1);</span><br><span class="line"><span class="built_in">console</span>.log(p2);</span><br><span class="line">alert(p1===p2);</span><br></pre></td></tr></table></figure>
+<pre><code class="js"><span class="keyword">var</span> Waiter = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="keyword">var</span> dfd = [],
+      doneArr = [],
+      failArr = [],
+      slice = <span class="built_in">Array</span>.prototype.slice,
+      that = <span class="keyword">this</span>;
+
+  <span class="keyword">var</span> <span class="built_in">Promise</span> = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="keyword">this</span>.resolved = <span class="literal">false</span>;
+    <span class="keyword">this</span>.rejected = <span class="literal">false</span>;
+  };
+
+  <span class="built_in">Promise</span>.prototype = {
+    resolve: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+      <span class="keyword">this</span>.resolved = <span class="literal">true</span>;
+      <span class="keyword">if</span>(!dfd.length) <span class="keyword">return</span>;
+      <span class="keyword">for</span>(<span class="keyword">var</span> i=dfd.length-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--) {
+        <span class="keyword">if</span>(dfd[i] &amp;&amp; !dfd[i].resolved || dfd[i].rejected) {
+          <span class="keyword">return</span>;
+        }
+        dfd.splice(i,<span class="number">1</span>);
+      };
+      _exec(doneArr, <span class="keyword">this</span>);
+    },
+    reject: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+      <span class="keyword">this</span>.rejected = <span class="literal">true</span>;
+      <span class="keyword">if</span>(!dfd.length) <span class="keyword">return</span>;
+      dfd.splice(<span class="number">0</span>);
+      _exec(failArr);
+    }
+  };
+
+  <span class="keyword">this</span>.Deferred = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>();
+  };
+
+  <span class="function"><span class="keyword">function</span> <span class="title">_exec</span>(<span class="params">arr</span>) </span>{
+    <span class="keyword">var</span> i = <span class="number">0</span>,
+        len = arr.length;
+    <span class="keyword">for</span>(;i&lt;len;i++) {
+      <span class="keyword">try</span>{
+        arr[i] &amp;&amp; arr[i]();
+      } <span class="keyword">catch</span>(e) {}
+    }
+  };
+  that.when = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    dfd = slice.call(<span class="built_in">arguments</span>);
+    <span class="keyword">var</span> i = dfd.length;
+    <span class="keyword">for</span>(--i; i&gt;=<span class="number">0</span>; i--) {
+      <span class="keyword">if</span>(!dfd[i] || dfd[i].resolved || dfd[i].rejected || !dfd[i] <span class="keyword">instanceof</span> <span class="built_in">Promise</span>) {
+        dfd.splice(i,<span class="number">1</span>);
+      };
+    };
+    <span class="keyword">return</span> that;
+  };
+  that.done = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    doneArr = doneArr.concat(slice.call(<span class="built_in">arguments</span>));
+    <span class="keyword">return</span> that;
+  };
+  that.fail = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    failArr = failArr.concat(slice.call(<span class="built_in">arguments</span>));
+    <span class="keyword">return</span> that;
+  };
+};
+
+
+<span class="keyword">var</span> waiter = <span class="keyword">new</span> Waiter();
+<span class="keyword">var</span> first = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="keyword">var</span> dtd = waiter.Deferred();
+  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(<span class="string">'first finish'</span>);
+    dtd.resolve();
+  }, <span class="number">2000</span>);
+  <span class="keyword">return</span> dtd;
+}();
+<span class="keyword">var</span> second = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="keyword">var</span> dtd = waiter.Deferred();
+  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(<span class="string">'second finish'</span>);
+    dtd.resolve();
+  }, <span class="number">5000</span>);
+  <span class="keyword">return</span> dtd;
+}();
+waiter.when(first, second).done(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="built_in">console</span>.log(<span class="string">'success'</span>);
+}, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="built_in">console</span>.log(<span class="string">'success again'</span>);
+}).fail(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="built_in">console</span>.log(<span class="string">'fail'</span>);
+});
+</code></pre>
 
       
     </div>
@@ -332,8 +434,6 @@
           
             <a href="/tags/javascript/" rel="tag">#javascript</a>
           
-            <a href="/tags/js设计模式/" rel="tag">#js设计模式</a>
-          
         </div>
       
 
@@ -341,17 +441,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/02/Delay-Function/" rel="next" title="Delay Function">
-                <i class="fa fa-chevron-left"></i> Delay Function
+              <a href="/2015/11/05/发布-订阅模式/" rel="next" title="发布-订阅模式">
+                <i class="fa fa-chevron-left"></i> 发布-订阅模式
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/03/策略模式/" rel="prev" title="策略模式">
-                策略模式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -366,10 +462,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/11/02/单例模式/"
-     data-title="单例模式"
+        <div class="ds-share flat" data-thread-key="2015/12/16/异步等待/"
+     data-title="异步等待"
      data-content=""
-     data-url="http://flicker85.github.io/2015/11/02/单例模式/">
+     data-url="http://flicker85.github.io/2015/12/16/异步等待/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -396,8 +492,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/11/02/单例模式/"
-           data-title="单例模式" data-url="http://flicker85.github.io/2015/11/02/单例模式/">
+      <div class="ds-thread" data-thread-key="2015/12/16/异步等待/"
+           data-title="异步等待" data-url="http://flicker85.github.io/2015/12/16/异步等待/">
       </div>
     
   </div>
