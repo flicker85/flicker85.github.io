@@ -77,7 +77,7 @@ var Waiter = function() {
       doneArr = [],
       failArr = [],
       slice = Array.prototype.s">
-<meta property="og:updated_time" content="2015-12-21T05:52:22.000Z">
+<meta property="og:updated_time" content="2015-12-22T03:29:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="异步等待">
 <meta name="twitter:description" content="等待者模式: 通过对多个异步进程监听，来触发未来发生的动作。应用场景: 对setTimeout、ajax等异步操作进行监听，当指定的多个异步操作完成后再统一执行回调函数。
@@ -355,7 +355,7 @@ var Waiter = function() {
         }
         dfd.splice(i,<span class="number">1</span>);
       };
-      _exec(doneArr, <span class="keyword">this</span>);
+      _exec(doneArr);
     },
     reject: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
       <span class="keyword">this</span>.rejected = <span class="literal">true</span>;
